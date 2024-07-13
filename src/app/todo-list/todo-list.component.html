@@ -1,0 +1,29 @@
+<div [ngClass]="'main-card'">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>To do list</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul *ngIf="todoList$ | async as todoList">
+        <li *ngFor="let todoItem of todoList" id="todo-{{todoItem.id}}">
+          <mat-card appearance="outlined" [ngClass]="'item-card'">
+            <mat-card-content [ngClass]="'item-card-content'">
+              {{todoItem.content}}
+              <button mat-mini-fab [ngClass]="'item-delete-button'" (click)="deleteItem(todoItem.id)">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-card-content>
+          </mat-card>
+        </li>
+      </ul>
+    </mat-card-content>
+    <mat-card-footer>
+      <mat-form-field [ngClass]="'add-todo-input'">
+        <input matInput type="text" [(ngModel)]="addTodoInputValue" (keyup.enter)="addTodoItem()">
+      </mat-form-field>
+      <button mat-fab aria-label="Add todo item" [ngClass]="'add-todo-button'" (click)="addTodoItem()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-card-footer>
+  </mat-card>
+</div>

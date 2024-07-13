@@ -1,0 +1,52 @@
+.main-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+mat-card {
+  width: 80%;
+  max-width: 600px;
+  min-width: 300px;
+}
+
+mat-card-footer {
+  width: 90%;
+  margin: 1em auto auto;
+  display: flex;
+  align-content: center;
+}
+
+.add-todo-input {
+  width: 80%;
+}
+
+.add-todo-button {
+  margin-left: 1em;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.item-card {
+  width: 100%;
+  margin-bottom: 0.3em;
+}
+
+.item-card:hover {
+  background-color: var(--mat-menu-item-hover-state-layer-color);
+}
+
+.item-card-content {
+  padding: 0.5em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-delete-button {
+  margin-left: auto;
+}

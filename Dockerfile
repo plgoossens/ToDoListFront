@@ -7,5 +7,5 @@ RUN mkdir node_modules/.cache && chmod -R 777 node_modules/.cache
 RUN npm run build
 
 FROM nginx:1.7
-COPY --from=build /usr/local/app/dist/to-do-list-front /usr/share/nginx/html
+COPY --from=build /usr/local/app/dist/to-do-list-front/browser /usr/share/nginx/html
 EXPOSE 80

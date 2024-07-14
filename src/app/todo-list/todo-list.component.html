@@ -8,7 +8,8 @@
         <li *ngFor="let todoItem of todoList" id="todo-{{todoItem.id}}">
           <mat-card appearance="outlined" [ngClass]="'item-card'">
             <mat-card-content [ngClass]="'item-card-content'">
-              {{todoItem.content}}
+              <mat-checkbox [checked]="todoItem.checked" (change)="checkTodoItem($event.checked, todoItem.id)"/>
+                {{todoItem.content}}
               <button mat-mini-fab [ngClass]="'item-delete-button'" (click)="deleteItem(todoItem.id)">
                 <mat-icon>close</mat-icon>
               </button>

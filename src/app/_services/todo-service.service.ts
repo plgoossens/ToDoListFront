@@ -42,4 +42,17 @@ export class TodoServiceService {
       }
     );
   }
+
+  updateTodo(id: number, content: string | null, checked: boolean | null): Observable<TodoItem> {
+    return this.http.put<TodoItem>(
+      `${env.backend_endpoint}/todo/${id}`,
+      {
+        "content": content,
+        "checked": checked
+      },
+      {
+        headers: {'Access-Control-Allow-Origin': '*'}
+      }
+    );
+  }
 }

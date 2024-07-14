@@ -9,6 +9,7 @@ import {MatInput} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatFabButton, MatMiniFabButton} from "@angular/material/button";
 import {FormsModule} from "@angular/forms";
+import {MatCheckbox} from "@angular/material/checkbox";
 
 @Component({
   selector: 'app-todo-list',
@@ -29,7 +30,8 @@ import {FormsModule} from "@angular/forms";
     MatFabButton,
     FormsModule,
     MatButton,
-    MatMiniFabButton
+    MatMiniFabButton,
+    MatCheckbox
   ],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css'
@@ -65,5 +67,9 @@ export class TodoListComponent implements OnInit {
     this.todoService.deleteTodo(id).subscribe(() => {
       this.getTodoList();
     });
+  }
+
+  checkTodoItem(checked: boolean, id: number) {
+    this.todoService.updateTodo(id, null, checked).subscribe();
   }
 }

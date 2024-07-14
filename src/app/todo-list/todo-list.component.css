@@ -50,3 +50,7 @@ ul {
 .item-delete-button {
   margin-left: auto;
 }
+
+.strike {
+  text-decoration: line-through;
+}

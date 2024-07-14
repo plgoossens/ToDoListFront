@@ -4,12 +4,12 @@
       <mat-card-title>To do list</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <ul *ngIf="todoList$ | async as todoList">
+      <ul *ngIf="todoList">
         <li *ngFor="let todoItem of todoList" id="todo-{{todoItem.id}}">
           <mat-card appearance="outlined" [ngClass]="'item-card'">
             <mat-card-content [ngClass]="'item-card-content'">
               <mat-checkbox [checked]="todoItem.checked" (change)="checkTodoItem($event.checked, todoItem.id)"/>
-                {{todoItem.content}}
+              <span [ngClass]="todoItem.checked ? 'strike' : ''">{{todoItem.content}}</span>
               <button mat-mini-fab [ngClass]="'item-delete-button'" (click)="deleteItem(todoItem.id)">
                 <mat-icon>close</mat-icon>
               </button>

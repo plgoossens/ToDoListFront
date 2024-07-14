@@ -37,7 +37,7 @@ import {MatCheckbox} from "@angular/material/checkbox";
   styleUrl: './todo-list.component.css'
 })
 export class TodoListComponent implements OnInit {
-  todoList$: Observable<TodoItem[]>;
+  todoList: TodoItem[];
   addTodoInputValue: string = '';
 
   constructor(
@@ -50,7 +50,7 @@ export class TodoListComponent implements OnInit {
   }
 
   getTodoList() {
-    this.todoList$ = this.todoService.getTodoList();
+    this.todoService.getTodoList().subscribe(todolist => this.todoList = todolist);
   }
 
   addTodoItem() {
@@ -70,6 +70,18 @@ export class TodoListComponent implements OnInit {
   }
 
   checkTodoItem(checked: boolean, id: number) {
-    this.todoService.updateTodo(id, null, checked).subscribe();
+    this.todoService.updateTodo(id, null, checked).subscribe(
+      todo => this.updateTodoItemInList(todo)
+    );
   }
+
+  updateTodoItemInList(todo: TodoItem) {
+    this.todoList = this.todoList.map(todoItem => {
+      if (todoItem.id === todo.id) {
+        return todo;
+      }
+      return todoItem;
+    })
+  }
+
 }
